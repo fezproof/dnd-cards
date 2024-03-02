@@ -5,6 +5,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import styles from "./tailwind.css?url";
+import { LinksFunction } from "@remix-run/cloudflare";
+
+export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,7 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="font-serif">
         {children}
         <ScrollRestoration />
         <Scripts />
