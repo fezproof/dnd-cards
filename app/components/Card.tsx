@@ -2,7 +2,10 @@ import { Arrows } from "./Arrows";
 
 export const Card = () => {
   return (
-    <div className="border border-black w-[7cm] h-[12cm] flex flex-col justify-between py-2 items-stretch px-2 gap-2">
+    <div
+      className="border border-black w-[7cm] h-[12cm] flex flex-col justify-between py-2 items-stretch px-2 gap-2"
+      style={{ pageBreakInside: "avoid" }}
+    >
       <Arrows />
 
       <h1 contentEditable className="text-2xl font-display text-center">

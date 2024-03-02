@@ -7,7 +7,6 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   plugins: [remixCloudflareDevProxy(), remix(), tsconfigPaths()],
-  assetsInclude: ["**/*.woff2", "**/*.woff"],
   server: {
     fs: {
       // Restrict files that could be served by Vite's dev server.  Accessing
