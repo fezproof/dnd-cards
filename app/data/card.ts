@@ -57,6 +57,7 @@ export const itemSchema = z.object({
   description: z.string().max(280),
   type: z.enum(itemTypes),
   rarity: z.enum(rarityTypes),
+  requiresAttunement: z.boolean(),
   stats: z.array(itemStatSchema),
   effects: z.array(
     z.object({

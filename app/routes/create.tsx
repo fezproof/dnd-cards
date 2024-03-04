@@ -7,7 +7,7 @@ import {
   redirect,
   useActionData,
 } from "@remix-run/react";
-import CardFormFields from "~/components/CardForm";
+import CardFormFields from "~/components/CardFormFields";
 import { createCard, itemSchema } from "~/data/card";
 
 export const clientLoader = async () => {

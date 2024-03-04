@@ -11,6 +11,7 @@ import {
   rarityTypes,
   statTypes,
 } from "~/data/card";
+import SwitchInput from "./inputs/switch-input";
 
 type CardFormFieldProps = {
   formId: FormId<CardType>;
@@ -28,7 +29,13 @@ export default function CardFormFields(props: CardFormFieldProps) {
     <>
       <fieldset className="mb-8">
         <legend className="mb-2">Basic Info</legend>
-        <TextInput name={fields.name.name} label="Name" type="text" />
+        <div className="grid grid-cols-2 gap-2">
+          <TextInput name={fields.name.name} label="Name" type="text" />
+          <SwitchInput
+            name={fields.requiresAttunement.name}
+            label="Requires Attunment"
+          />
+        </div>
         <div className="grid grid-cols-2 gap-2">
           <SelectInput name={fields.rarity.name} label="Rarity">
             {rarityTypes.map((r) => (

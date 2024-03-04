@@ -9,7 +9,7 @@ import {
   useActionData,
   useLoaderData,
 } from "@remix-run/react";
-import CardFormFields from "~/components/CardForm";
+import CardFormFields from "~/components/CardFormFields";
 import { getCard, itemSchema, updateCard } from "~/data/card";
 
 const getItem = async (id: string | undefined) => {
