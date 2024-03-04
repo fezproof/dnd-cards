@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
-import { useState } from "react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { Card } from "~/components/Card";
+import { listCards } from "~/data/card";
 
 export const meta: MetaFunction = () => {
   return [
@@ -12,30 +13,26 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const clientLoader = async () => {
+  const cards = await listCards();
+
+  return { cards };
+};
+
 export default function Index() {
-  const [count, setCount] = useState(1);
+  const { cards } = useLoaderData<typeof clientLoader>();
   return (
     <div className="px-[0.25in]">
-      <div className="print:hidden flex gap-4">
-        <button
-          onClick={() => {
-            setCount((c) => c + 1);
-          }}
-        >
-          Add
-        </button>
-        <button
-          onClick={() => {
-            setCount((c) => c - 1);
-          }}
-        >
-          Remove last
-        </button>
-      </div>
+      <Link to="create">Create Card</Link>
       <div className="grid grid-cols-[repeat(auto-fill,minmax(3in,1fr))] gap-[0.25in]">
-        {new Array(count).fill(undefined).map((_, i) => (
-          <Card key={i} />
-        ))}
+        {cards.map(([id, card]) => {
+          return (
+            <div key={id}>
+              <Card {...card} />
+              <Link to={`edit/${id}`}>Edit</Link>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
